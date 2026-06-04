@@ -1,0 +1,15 @@
+node_modules/
+web/node_modules/
+artifacts/
+cache/
+typechain-types/
+dist-ts/
+.env
+.env.*
+!.env.example
+deployments/localhost.json
+deployments/*.local.json
+web/dist/
+web/public/generated/game-events.json
+web/public/generated/leaderboard.json
+web/public/generated/*.local.json
