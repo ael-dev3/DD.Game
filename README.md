@@ -2,7 +2,16 @@
 
 DD.Game is a standalone clean-room Web3 game prototype where each wallet runs an underground Degen Dogs club on Base Sepolia or a local Hardhat chain.
 
+- Live game: [https://ael-dev3.github.io/DD.Game/](https://ael-dev3.github.io/DD.Game/)
+- Repository: [https://github.com/ael-dev3/DD.Game](https://github.com/ael-dev3/DD.Game)
+
 Players keep the bassline alive, run timed club actions, manage resources, upgrade the venue, defend against rival clubs, raid rival clubs, and climb a generated leaderboard.
+
+## Live game
+
+<https://ael-dev3.github.io/DD.Game/>
+
+The hosted build is the static Vite frontend. Without deployed contract addresses it stays in mock review mode, so the UI can be opened from GitHub Pages before a Base Sepolia deployment.
 
 ## Clean-room boundary
 
