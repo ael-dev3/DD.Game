@@ -1,0 +1,16 @@
+{
+  "network": "localhost",
+  "chainId": 31337,
+  "deployedAt": "2026-01-01T00:00:00.000Z",
+  "deployer": "0x0000000000000000000000000000000000000000",
+  "startBlock": 1,
+  "contracts": {
+    "spender": "0x0000000000000000000000000000000000000000",
+    "reward": "0x0000000000000000000000000000000000000000",
+    "game": "0x0000000000000000000000000000000000000000"
+  },
+  "tokens": {
+    "spender": { "name": "Mock Club Cash", "symbol": "CLUB" },
+    "reward": { "name": "Mock Street Rep", "symbol": "REP" }
+  }
+}
