@@ -1,0 +1,9 @@
+{
+  "source": "mock",
+  "fromBlock": "0",
+  "toBlock": "0",
+  "events": [
+    { "eventName": "ClubCreated", "args": { "player": "0xDDBa55000000000000000000000000000000C1ub" } },
+    { "eventName": "SetDropped", "args": { "player": "0xDDBa55000000000000000000000000000000C1ub", "rewardEarned": "25" } }
+  ]
+}
