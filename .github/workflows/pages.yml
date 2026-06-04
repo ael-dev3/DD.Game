@@ -33,12 +33,6 @@ jobs:
       - name: Install web dependencies
         run: npm --prefix web ci
 
-      - name: Compile contracts
-        run: npm run compile
-
-      - name: Export ABI JSON
-        run: npm run export:abi
-
       - name: Build web app
         run: npm run web:build
         env:

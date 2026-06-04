@@ -2,35 +2,16 @@
   "name": "dd-game",
   "version": "0.1.0",
   "private": true,
-  "description": "Clean-room Degen Dogs Underground Club game prototype for Base Sepolia.",
+  "description": "Static initial draft for DD.Game, with the smart-contract prototype archived for reference.",
   "license": "MIT",
   "scripts": {
-    "compile": "hardhat compile",
-    "test": "hardhat test",
-    "node": "hardhat node",
-    "deploy:local": "hardhat run scripts/deployLocal.ts --network localhost",
-    "deploy:base-sepolia": "hardhat run scripts/deployBaseSepolia.ts --network baseSepolia",
-    "seed:local": "hardhat run scripts/seedLocal.ts --network localhost",
-    "export:abi": "tsx scripts/exportAbi.ts",
-    "index:events": "tsx src/indexer/indexEvents.ts",
-    "build:leaderboard": "tsx src/indexer/buildLeaderboard.ts",
+    "typecheck": "tsc --noEmit",
     "web:install": "cd web && npm install",
     "web:dev": "cd web && npm run dev",
     "web:build": "cd web && npm run build",
-    "typecheck": "tsc --noEmit",
-    "check": "npm run compile && npm run export:abi && npm run typecheck && npm test && npm run web:build"
-  },
-  "dependencies": {
-    "@openzeppelin/contracts": "^5.1.0",
-    "dotenv": "^16.4.7",
-    "viem": "^2.21.58"
+    "check": "npm run typecheck && npm run web:build"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "@types/node": "^22.10.2",
-    "hardhat": "^2.22.17",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   }
 }

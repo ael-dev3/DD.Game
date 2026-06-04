@@ -38,14 +38,14 @@ export function actionLabel(action: keyof typeof ACTION_COOLDOWNS): string {
     bar: "Run the Bar",
     set: "Drop a Set",
     promo: "Street Promo",
-    raid: "Raid Rival Club"
+    raid: "Rival Pressure"
   }[action];
 }
 
 export function upgradeDescription(upgrade: UpgradeName): string {
   return {
-    "DJ Booth": "More HYPE and reward tokens when you Drop a Set.",
-    "Security Team": "Better defense and smaller raid losses.",
+    "DJ Booth": "More HYPE and Street Rep when you Drop a Set.",
+    "Security Team": "Better defense and smaller rival losses.",
     "VIP Kennel": "Score multiplier and bigger headline nights.",
     "Back Room": "More BONES and VIBE from club operations.",
     "Neon Sign": "More discovery, HYPE, and uptime score."

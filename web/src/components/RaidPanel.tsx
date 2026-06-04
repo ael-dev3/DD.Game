@@ -1,40 +1,34 @@
-import { useState } from "react";
-import type { Address } from "viem";
+const pressureCards = [
+  {
+    title: "Choose a target resource",
+    copy: "Rival clubs threaten one resource lane at a time, forcing the player to decide what matters most this night."
+  },
+  {
+    title: "Set a guard priority",
+    copy: "Protect BONES, HYPE, VIBE, or SECURITY before the room gets too loud. Good reads prevent losses."
+  },
+  {
+    title: "Heat changes behavior",
+    copy: "Higher Club Heat makes rival pressure more likely, so fast growth has a visible downside."
+  }
+];
 
-const resources = [
-  [1, "BONES"],
-  [2, "HYPE"],
-  [3, "VIBE"],
-  [4, "SECURITY"]
-] as const;
-
-export function RaidPanel({ disabled, setDefense, raidClub }: { disabled?: boolean; setDefense: (resource: number) => void; raidClub: (target: Address, resource: number) => void }) {
-  const [target, setTarget] = useState("");
-  const [resource, setResource] = useState(1);
-  const validTarget = /^0x[a-fA-F0-9]{40}$/.test(target);
-
+export function RaidPanel() {
   return (
     <section className="panel raid-panel">
       <div className="section-title">
         <p className="eyebrow">Rival clubs</p>
         <h2>Guard the Back Room</h2>
       </div>
-      <p>Defense is deterministic: if the attacker chooses the resource you protected, you win and they steal nothing.</p>
-      <div className="form-row">
-        <label>
-          Target wallet
-          <input value={target} onChange={(event) => setTarget(event.target.value)} placeholder="0x rival club wallet" />
-        </label>
-        <label>
-          Target resource
-          <select value={resource} onChange={(event) => setResource(Number(event.target.value))}>
-            {resources.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-          </select>
-        </label>
-      </div>
-      <div className="cta-row">
-        <button className="ghost" onClick={() => setDefense(resource)} disabled={disabled}>Protect {resources.find(([value]) => value === resource)?.[1]}</button>
-        <button onClick={() => raidClub(target as Address, resource)} disabled={disabled || !validTarget}>Raid Rival Club</button>
+      <p>Rival pressure stays as a design concept in this static draft. There is no player targeting, live raid action, or connected backend.</p>
+      <div className="action-grid">
+        {pressureCards.map((card) => (
+          <article className="action-card" key={card.title}>
+            <h3>{card.title}</h3>
+            <p>{card.copy}</p>
+            <span className="draft-note">Draft system note</span>
+          </article>
+        ))}
       </div>
     </section>
   );

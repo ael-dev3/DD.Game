@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
     "skipLibCheck": true,
-    "types": ["node", "mocha"],
-    "outDir": "dist-ts"
+    "noEmit": true
   },
-  "include": ["hardhat.config.ts", "scripts/**/*.ts", "test/**/*.ts", "src/**/*.ts"],
-  "exclude": ["node_modules", "web"]
+  "include": ["src/game/**/*.ts"],
+  "exclude": ["node_modules", "web", "archive"]
 }

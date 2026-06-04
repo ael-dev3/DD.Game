@@ -11,20 +11,19 @@ type Props = {
     vibe: number;
     security: number;
     heat: number;
-    pendingRewards: number;
+    streetRep: number;
     upgrades: number[];
   };
   cooldowns?: { nightDueAt: number; shutdownAt: number };
-  onRunNight: () => void;
-  onRevive: () => void;
-  onClaimRewards: () => void;
-  disabled?: boolean;
 };
 
-export function ClubStatus({ club, cooldowns, onRunNight, onRevive, onClaimRewards, disabled }: Props) {
+function statusClass(status: string) {
+  return status.toLowerCase().replace(/\s+/g, "-").replace(/_/g, "-");
+}
+
+export function ClubStatus({ club, cooldowns }: Props) {
   const night = useCountdown(cooldowns?.nightDueAt);
   const shutdown = useCountdown(cooldowns?.shutdownAt);
-  const shutDown = club.status === "SHUT_DOWN";
   const resources = [
     ["BONES", club.bones],
     ["HYPE", club.hype],
@@ -42,17 +41,16 @@ export function ClubStatus({ club, cooldowns, onRunNight, onRevive, onClaimRewar
       <div className="club-copy">
         <p className="eyebrow">Underground Club</p>
         <h1>{club.name}</h1>
-        <div className={`status-pill ${club.status.toLowerCase().replace("_", "-")}`}>{club.status}</div>
+        <div className={`status-pill ${statusClass(club.status)}`}>{club.status}</div>
         <p className="score">Pack Reputation: <strong>{club.score.toLocaleString()}</strong></p>
-        <p className="timer">Run the Night: {cooldowns ? night.label : "mock 9h 12m"}</p>
-        {club.status === "AFTERHOURS" && <p className="warn">Afterhours output is reduced and rival raids hit harder.</p>}
-        {shutDown && <p className="warn">Club is shut down. Revive before normal actions.</p>}
+        <p className="timer">Run the Night: {cooldowns ? night.label : "draft 9h 12m"}</p>
+        <p className="timer">Street Rep queued: <strong>{club.streetRep.toLocaleString()}</strong></p>
         <div className="cta-row">
-          <button onClick={onRunNight} disabled={disabled || shutDown}>Run the Night</button>
-          <button onClick={onRevive} disabled={disabled || !shutDown}>Revive Club</button>
-          <button className="ghost" onClick={onClaimRewards} disabled={disabled || club.pendingRewards <= 0}>Claim {club.pendingRewards} REP</button>
+          <span className="draft-note">72h upkeep pressure</span>
+          <span className="draft-note">Upgrade-first resource loop</span>
+          <span className="draft-note">Rival heat risk</span>
         </div>
-        <small>Shutdown grace: {cooldowns ? formatSeconds(shutdown.seconds) : "mock 57h"}</small>
+        <small>Shutdown grace concept: {cooldowns ? formatSeconds(shutdown.seconds) : "draft 57h"}</small>
       </div>
       <div className="resource-grid">
         {resources.map(([label, value]) => (

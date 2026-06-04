@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
 import { mockEvents } from "../lib/mockState";
 
-type EventRow = { eventName: string; label?: string; transactionHash?: string };
+type EventRow = { eventName: string; label: string };
 
 export function EventFeed() {
-  const [events, setEvents] = useState<EventRow[]>(mockEvents);
-  useEffect(() => {
-    fetch("/generated/game-events.json")
-      .then((response) => (response.ok ? response.json() : undefined))
-      .then((json) => {
-        if (json?.events?.length) setEvents(json.events.slice(-8).reverse());
-      })
-      .catch(() => undefined);
-  }, []);
+  const events: EventRow[] = mockEvents;
 
   return (
     <section className="panel">
@@ -24,7 +15,7 @@ export function EventFeed() {
         {events.map((event, index) => (
           <li key={`${event.eventName}-${index}`}>
             <strong>{event.eventName}</strong>
-            <span>{event.label || event.transactionHash || "Onchain club event"}</span>
+            <span>{event.label}</span>
           </li>
         ))}
       </ul>
